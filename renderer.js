@@ -1,5 +1,5 @@
 const { ipcRenderer } = require('electron');
-const { CsvWriter } = require('csv-writer');
+const { createObjectCsvWriter } = require('csv-writer');
 const fs = require('fs');
 
 let currentFrameIndex = 0;
@@ -23,7 +23,7 @@ function updateRecordedPoints() {
     });
   }
 
-const csvWriter = CsvWriter({
+const csvWriter = createObjectCsvWriter({
   path: 'associations.csv',
   header: [
     { id: 'frame1', title: 'FRAME1' },
